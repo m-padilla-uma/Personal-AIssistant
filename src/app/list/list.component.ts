@@ -27,15 +27,14 @@ export class ListComponent {
     if (savedList) {
       this.currList = JSON.parse(savedList);
     }
-    if (localStorage['currList'].length == 2){
+    if (localStorage['currList'].length <= 2){
       this.currList = [
         { item: 'Hello', selected: true },
         { item: 'World', selected: false },
       ];
       this.saveList();
-      console.log('LOC STO',localStorage)
-
     }
+    console.log(this.currList)
   }
 
   ngOnDestroy() {
@@ -59,6 +58,7 @@ export class ListComponent {
     this.saveList();
   }
   removeItem() {
+    this.saveList();
     if (localStorage['currList'].includes('true')){
       this.currList = this.currList.filter(item => !item.selected);
       this.saveList();
@@ -78,6 +78,7 @@ export class ListComponent {
     if(el != ''){
       this.currList.push({ item: el, selected: false })
       this.saveList();  
+      console.log(this.currList)
       this.newListItem = ''
     }
   }
