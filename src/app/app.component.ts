@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ListComponent } from "./list/list.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'personal-assistant1';
+  /* INFO VARIABLES */
+  title = 'Personal Assistant (in progress)';
+  author = 'Miguel Padilla'
+  currDate = Date()
 }
