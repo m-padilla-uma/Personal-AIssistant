@@ -27,7 +27,7 @@ export class ListComponent {
     if (savedList) {
       this.currList = JSON.parse(savedList);
     }
-    if (localStorage['currList'].length <= 2){
+    if (this.currList.length < 1){
       this.currList = [
         { item: 'Hello', selected: true },
         { item: 'World', selected: false },
