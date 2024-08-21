@@ -45,6 +45,14 @@ export class ListComponent {
     localStorage.setItem('currList', JSON.stringify(this.currList));
   }
 
+  updateList(el: { item: string, selected: boolean }){
+    el.selected = !el.selected
+    this.saveList()
+    const savedList = localStorage.getItem('currList');
+    if (savedList) {
+      this.currList = JSON.parse(savedList);
+    }
+  }
   removeAllItems() {
     if (localStorage['currList'].length > 2){
       if(confirm('You will clear all items on the list. Do you want to proceed?')){
@@ -64,7 +72,9 @@ export class ListComponent {
       this.saveList();
     }
     else {
-      alert('No item selected! Please, select an item.')
+      let msg = 'No item selected! Please, select an item.'
+      alert(msg)
+      throw new Error(msg);
     }
   }
 

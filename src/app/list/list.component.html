@@ -1,8 +1,8 @@
 <div class="bg-[#d7ebfa] rounded-3xl font-bold">
     <div *ngIf="currList.length >= 1" >
         <div class="bg-[#d7ebfa] rounded-3xl font-bold text-lg p-1.5" *ngFor="let el of currList">
-            <label class="cursor-pointer transition duration-300 hover:text-[#4a6f8c] hover:text-lg">
-                <input type="checkbox" class="h-[15pt] w-[15pt] hover:cursor-pointer" [(ngModel)]="el.selected">{{ el.item }}
+            <label class="cursor-pointer transition duration-300 ease-in-out hover:text-[#4a6f8c]">
+                <input type="checkbox" class="h-[15pt] w-[15pt] hover:cursor-pointer" (click)="updateList(el)" [(ngModel)]="el.selected">{{ el.item }}
             </label>
         </div>
     </div>
@@ -10,15 +10,15 @@
         <p> Congratulations, the list is empty! You've done it all!</p>
     </div>
     <div class="p-2.5 space-x-2 flex justify-center">
-        <button class="px-5 bg-white rounded-md transition ease-in-out duration-300 border-0 hover:bg-[#3081fa] hover:rounded-lg hover:text-white transition ease-in-out duration-100" (click)="toogleSelectAllItems()">Select all</button>
-        <button class="px-5 bg-white rounded-md transition ease-in-out duration-300 border-0 hover:bg-[#3081fa] hover:rounded-lg hover:text-white transition ease-in-out duration-100" (click)="removeItem()">Mark as complete</button>
-        <button class="px-5 bg-white rounded-md transition ease-in-out duration-300 border-0 hover:bg-[#3081fa] hover:rounded-lg hover:text-white transition ease-in-out duration-100" (click)="removeAllItems()">Reset list</button>
+        <button class="px-5 bg-white rounded-md transition ease-in-out duration-300 border-0 hover:bg-[#3081fa] hover:rounded-lg hover:text-white" (click)="toogleSelectAllItems()">Select all</button>
+        <button class="px-5 bg-white rounded-md transition ease-in-out duration-300 border-0 hover:bg-[#3081fa] hover:rounded-lg hover:text-white" (click)="removeItem()">Mark as complete</button>
+        <button class="px-5 bg-white rounded-md transition ease-in-out duration-300 border-0 hover:bg-[#3081fa] hover:rounded-lg hover:text-white" (click)="removeAllItems()">Reset list</button>
     </div>
-    </div>
+</div>
 
 <div class="w-full min-h-full flex justify-center items-center p-1 relative">
     <main class="mx-2 w-full min-h-full flex justify-center items-center p-4 relative">
         <input class="px-2 text-lg text-white bg-black rounded-lg w-[300pt]" type="text" placeholder="Type new list item here..." [(ngModel)]="newListItem">
-        <button class="px-3 text-base bg-white h-[50px] rounded-lg transition duration-300 hover:bg-gray-500 hover:text-white hover:cursor-pointer" (click)="addListItem(newListItem)">Add item to list</button>
+        <button class="px-3 text-base bg-white h-[50px] rounded-lg transition duration-300 hover:bg-gray-500 hover:text-white hover:cursor-pointer ml-2" (click)="addListItem(newListItem)">Add item to list</button>
     </main>
 </div>
