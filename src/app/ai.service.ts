@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 
@@ -9,8 +9,10 @@ export class AIService {
   private apiUrl = 'http://127.0.0.1:5000'
   constructor(private http: HttpClient) {}
 
-  getAssistance(formData: FormData): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/get-assistance`, formData)
+  getAssistance(formData: any): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    console.log('FORMDATA:', formData)
+    return this.http.post<any>(`${this.apiUrl}/get-assistance`, JSON.stringify(formData), { headers })
       .pipe(
         catchError((error: any) => {
           console.error('Error:', error); // Log any errors that occur

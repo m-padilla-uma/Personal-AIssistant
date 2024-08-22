@@ -7,5 +7,5 @@
     <button class="w-auto font-bold px-5 bg-white rounded-md transition ease-in-out duration-300 border-0 hover:bg-[#3081fa] hover:rounded-lg hover:text-white my-1" (click)="getListAssistance(all)">Assist me!</button>
 </div>
 <div class="flex justify-center">
-    <input type="text" name="answer" disabled class="bg-slate-900 text-green-200 border border-black border-double rounded-lg w-full h-52">
+    <textarea name="answer" disabled class="bg-slate-900 p-4 text-green-200 border border-black border-double rounded-lg w-full h-[800px]" [(ngModel)]="response"></textarea>
 </div>
