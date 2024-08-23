@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AIService } from '../ai.service';
-import { SafeHtml } from '@angular/platform-browser';
+import { SafeHtmlPipe } from '../pipes/safe-html.pipe';
 
 @Component({
   selector: 'app-assistant',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, SafeHtmlPipe],
   templateUrl: './assistant.component.html',
   styleUrls: ['./assistant.component.css']
 })
@@ -16,8 +16,9 @@ export class AssistantComponent {
   /* LIST VARIABLES */
   currList: { item: string, selected: boolean }[] = [];
   all: boolean = false
-  response: string = 'Ready to assist! Just select the items and I will do my best.'
+  response: string = 'Hi, my name is <strong><u><a href="https://console.groq.com/playground" class="" target="_blank">GroqCloud</a></u></strong>! Select the items from the list and I will do my best to assist.'
 
+  
   constructor(private aiService: AIService){}
   
   getListAssistance(all: boolean) {

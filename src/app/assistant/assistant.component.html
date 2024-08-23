@@ -1,11 +1,15 @@
 <div *ngIf="showWarning" class="bg-red-600 rounded-xl text-5xl text-yellow-200 text-justify m-5 p-3">The use of the OpenAI API is reserved for users that have <span class="underline font-bold"> least spent 5$</span> to expand their rate limit.<br>Ref: <a href="https://community.openai.com/t/do-i-able-to-use-api-on-the-free-plan/836268" class="text-blue-600 hover:underline hover:text-blue-500">here</a></div>
 <div class=" flex flex-col items-center mb-2">
-    <p class="bg-[#4a6f8c] text-white text-lg border-black text-center rounded-lg p-1.5 mb-2">Use the radio button to select all items from the To-Do list.<br>Leave unmarked if you only want to use the selected items.</p>
-    <label class="cursor-pointer font-bold text-lg hover:text-slate-600 transition duration-300 ease-in-out">
+    <p class="bg-[#4a6f8c] text-white text-lg border-black text-justify rounded-lg p-1.5 my-2">In the AI response there might be some <span     style="font-family: 'Courier New', Courier, monospace;" class="text-green-200 bg-black p-1 rounded-lg"><strong><u>links</u></strong></span> highlighted in bold and underlined. Feel free to click on them if you like.<br><br>
+    Please, be patient if there are any flaws in response format or content. This personal project is still under development an the prompt engineering is still being worked on. More features to improve AI's response will be added in the future.</p>
+
+    <label class="cursor-pointer font-bold text-lg hover:text-slate-600 transition duration-300 ease-in-out my-2">
         <input type="checkbox" class="h-[15pt] w-[15pt] hover:cursor-pointer" [(ngModel)]="all"> Select all items
     </label>
     <button class="w-auto font-bold px-5 bg-white rounded-md transition ease-in-out duration-300 border-0 hover:bg-[#3081fa] hover:rounded-lg hover:text-white my-1" (click)="getListAssistance(all)">Assist me!</button>
 </div>
-<div class="flex justify-center">
-    <textarea name="answer" disabled class="bg-slate-900 p-4 text-green-200 border border-black border-double rounded-lg w-full h-[800px]" [(ngModel)]="response"></textarea>
+<div 
+    class="bg-slate-900 px-2 text-green-200 text-lg border border-black border-double rounded-lg w-full h-auto overflow-y-auto"
+    style="font-family: 'Courier New', Courier, monospace;"
+    [innerHTML]="response | safeHtml">
 </div>

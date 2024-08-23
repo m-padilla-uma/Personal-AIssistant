@@ -12,7 +12,7 @@ import { AssistantComponent } from "./assistant/assistant.component";
 })
 export class AppComponent {
   /* INFO VARIABLES */
-  title = 'Personal Assistant (in progress)';
+  title = 'Personal Assistant (Alpha)';
   author = 'Miguel Padilla'
   currDate = Date()
 }
